@@ -51,45 +51,41 @@ def end_of_free_spaces():
         return False
 
 
-game_on = True
-while game_on:
-    incorrect_move_player_1 = True
-    while incorrect_move_player_1:
+def player_turn(player_name, player_mark, player_positions):
+    incorrect_move = True
+    while incorrect_move:
         create_board()
-        move_player_1 = input(f"{PLAYER_1_NAME}: Under which position you want to put your mark ( {PLAYER_1_MARK} ): ")
-        if move_player_1 in locations:
-            position = locations.index(move_player_1)
-            player_1_positions.append(locations[position])
-            locations[position] = PLAYER_1_MARK
-            incorrect_move_player_1 = False
-
+        player_move = input(f"{player_name}: Under which position you want to put your mark ( {player_mark} ): ")
+        if player_move in locations:
+            position = locations.index(player_move)
+            player_positions.append(locations[position])
+            locations[position] = player_mark
+            incorrect_move = False
         else:
             print(f"This position is not available. Choose different one.")
-    if winning(player_1_positions):
-        print(f"{PLAYER_1_NAME} win")
+    return player_positions, player_name
+
+
+
+game_on = True
+while game_on:
+    move_player1 = player_turn(PLAYER_1_NAME, PLAYER_1_MARK, player_1_positions)
+    if winning(move_player1[0]):
+        print(f"{move_player1[1]} win")
         break
     elif end_of_free_spaces():
-        print("End of free space. Noboby win.")
+        print("End of free space. Nobody win.")
         break
-    incorrect_move_player_2 = True
-    while incorrect_move_player_2:
-        create_board()
-        move_player_2 = input(f"{PLAYER_2_NAME}: Under which position you want to put your mark ( {PLAYER_2_MARK} ): ")
-        if move_player_2 in locations:
-            position = locations.index(move_player_2)
-            player_2_positions.append(locations[position])
-            locations[position] = PLAYER_2_MARK
-            incorrect_move_player_2 = False
-        else:
-            print("This position is not available. Choose different one.")
-    if winning(player_2_positions):
-        print(f"{PLAYER_2_NAME}win")
+    move_player2 = player_turn(PLAYER_2_NAME, PLAYER_2_MARK, player_2_positions)
+    if winning(move_player2[0]):
+        print(f"{move_player2[1]} win")
         break
     elif end_of_free_spaces():
-        print("End of free space. Noboby win.")
+        print("End of free space. Nobody win.")
         break
     print("--------------------------------------END OF ROUND--------------------------------------")
 
 print("Final board:")
 create_board()
+
 

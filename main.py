@@ -3,6 +3,8 @@ wall_back = "|"
 
 locations = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
+print("Welcome to the Tic Tac Toe Game!")
+
 PLAYER_1_NAME = input("What is the name of first player?: ")
 PLAYER_1_MARK = "*"
 
@@ -22,6 +24,7 @@ winning_locations = [
     ["1", "5", "9"],
     ["3", "5", "7"]
 ]
+
 
 def create_board():
     print(wall_up_down)

@@ -6,8 +6,14 @@ locations = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 PLAYER_1_MARK = "*"
 PLAYER_2_MARK = "○"
 
-
-
+winning_locations = [[locations[0], locations[1], locations[2]],
+                    [locations[3], locations[4], locations[5]],
+                    [locations[6], locations[7], locations[8]],
+                    [locations[0], locations[3], locations[6]],
+                    [locations[1], locations[4], locations[7]],
+                    [locations[2], locations[5], locations[8]],
+                    [locations[0], locations[4], locations[8]],
+                    [locations[2], locations[4], locations[6]]]
 
 def create_board():
     print(wall_up_down)

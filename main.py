@@ -40,6 +40,15 @@ def winning(player_positions):
         return False
 
 
+def end_of_free_spaces():
+    num_marks_player1 = locations.count(PLAYER_1_MARK)
+    num_marks_player2 = locations.count(PLAYER_2_MARK)
+    if num_marks_player1 + num_marks_player2 == len(locations):
+        return True
+    else:
+        return False
+
+
 game_on = True
 while game_on:
     incorrect_move_player_1 = True
@@ -58,6 +67,9 @@ while game_on:
     if winning(player_1_positions):
         print("Player 1 win")
         break
+    elif end_of_free_spaces():
+        print("End of free space. Noboby win.")
+        break
     incorrect_move_player_2 = True
     while incorrect_move_player_2:
         create_board()
@@ -72,5 +84,9 @@ while game_on:
     if winning(player_2_positions):
         print("Player 2 win")
         break
-
+    elif end_of_free_spaces():
+        print("End of free space. Noboby win.")
+        break
+print("Final board")
+create_board()
 

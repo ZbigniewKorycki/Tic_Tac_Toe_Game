@@ -3,10 +3,10 @@ wall_back = "|"
 
 locations = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-PLAYER_1_NAME = "Adam"
+PLAYER_1_NAME = input("What is the name of first player?: ")
 PLAYER_1_MARK = "*"
 
-PLAYER_2_NAME = "Marek"
+PLAYER_2_NAME = input("What is the name of second player?: ")
 PLAYER_2_MARK = "○"
 
 player_1_positions = []
@@ -55,7 +55,7 @@ def player_turn(player_name, player_mark, player_positions):
     incorrect_move = True
     while incorrect_move:
         create_board()
-        player_move = input(f"{player_name}: Under which position you want to put your mark ( {player_mark} ): ")
+        player_move = input(f"{player_name}: Under which position do you want to put your mark ( {player_mark} ): ")
         if player_move in locations:
             position = locations.index(player_move)
             player_positions.append(locations[position])
@@ -64,7 +64,6 @@ def player_turn(player_name, player_mark, player_positions):
         else:
             print(f"This position is not available. Choose different one.")
     return player_positions, player_name
-
 
 
 game_on = True
